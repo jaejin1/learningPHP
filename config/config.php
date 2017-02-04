@@ -8,3 +8,7 @@
 
 
 include_once $_SERVER['DOCUMENT_ROOT']. '/Sites/templates/ground/Header.php';
+
+define('CSS_ROOT','./css');
+define('HOME_PATH','/Sites');
+define('JS_ROOT','/Sites/JS');

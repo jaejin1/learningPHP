@@ -9,6 +9,12 @@ html {
 *:after {
     box-sizing: inherit;
 }
+.login{
+    margin-left: 750px;
+    color : black;
+
+}
+
 
 .title{
     text-align: right;
@@ -18,6 +24,9 @@ html {
     font-family: Georgia, Arial, sans-serif;
     letter-spacing: 1px;
 
+}
+.title a{
+    color: white;
 }
 
 .nav {

@@ -5,6 +5,12 @@
  * Date: 2017. 2. 3.
  * Time: PM 9:41
  */
+include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/db.php';
+
+session_start();
+
+$_SESSION['user'] = 'jaein';
+
 
 class Header{
     public static function render(){
@@ -12,7 +18,7 @@ class Header{
         <nav role="navigation" class="nav">
             <ul class="nav-items">
                 <span class="title">
-                Jaejin
+                    <a href="/Sites/index.php" >Jaejin</a>
                 </span>
                 <li class="nav-item">
                     <a href="#" class="nav-link"><span>Home</span></a>
@@ -50,6 +56,7 @@ class Header{
                         </nav>
                 </li>  
             </ul>
+        
         </nav>
         ';
     }
