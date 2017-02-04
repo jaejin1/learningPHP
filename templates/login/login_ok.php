@@ -14,13 +14,35 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/db.php';
 
 $id = $_POST['id'];
 $pw = $_POST['pw'];
-echo $id;
-echo $pw;
+$sql = "select * from login where id='$id'";
+
+$stmt = mysql_query($sql);
+$row = mysql_fetch_array($stmt, MYSQL_NUM);
+echo $row[1];
+
+
+
 
 if($id == ""){
     echo "<script>alert('아이디를 입력하세요.');location.replace('/Sites/templates/login/login.php');</script>";
 }elseif($pw == ""){
     echo "<script>alert('비밀번호를 입력하세요.');location.replace('/Sites/templates/login/login.php');</script>";
+}
+
+if($row[0] != $id){
+    echo "
+        <script>
+            alert('아이디가 없습니다.');
+            location.replace('/Sites/templates/login/login.php');
+        </script>
+        ";
+}else if($row[1] != $pw){
+    echo "
+        <script>
+            alert('비밀번호가 틀립니다.');
+            location.replace('/Sites/templates/login/login.php');
+        </script>
+        ";
 }
 ?>
 
