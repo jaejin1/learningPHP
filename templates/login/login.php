@@ -48,7 +48,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/config.php';
                     <tr>
                         <td class = "description" >
                             <input type="submit" class = "btn_login" value="로그인" />
+
                         </td>
+                        <td><a href = "add.php" >회원가입</a></td>
                     </tr>
                 </table>
             </div>
