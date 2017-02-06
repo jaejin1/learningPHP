@@ -10,9 +10,8 @@ html {
     box-sizing: inherit;
 }
 .login{
-    margin-left: 750px;
     color : black;
-
+    text-align: right;
 }
 
 

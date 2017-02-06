@@ -6,10 +6,9 @@
  * Time: PM 1:06
  */
 
-#session_start();
+session_start();
 include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/config.php';
 
-#echo $_SESSION[user];
 
 ?>
 

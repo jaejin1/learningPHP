@@ -5,9 +5,7 @@
  * Date: 2017. 2. 4.
  * Time: PM 2:14
  */
-
-//session_start();  //아이디 가지고 로그인 유지 시킬려고
-
+session_start();
 include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/config.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/db.php';
 
@@ -43,8 +41,12 @@ if($row[0] != $id){
             location.replace('/Sites/templates/login/login.php');
         </script>
         ";
+}else{
+    $_SESSION['session_id'] = $id;
+    echo "<script>location.replace('/Sites/index.php');</script>";
 }
 ?>
+
 
 <!DOCTYPE HTML>
 <html>

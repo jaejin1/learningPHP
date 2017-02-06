@@ -5,12 +5,25 @@
  * Date: 2017. 2. 3.
  * Time: PM 9:41
  */
+session_start();
 include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/db.php';
 
-session_start();
+if(isset($_SESSION['session_id'])) {
+    $id = $_SESSION['session_id'];
+}
+echo '<div class="login">';
+
+if(!isset($id)) {
+    echo "<a href=\"../Sites/templates/login/login.php\">로그인</a>&nbsp&nbsp&nbsp";
+}else{
+    echo $id . '님 어서오세요';
+    echo "</br>";
+    echo "<a href=\"../Sites/templates/login/logout.php\">로그아웃</a>";
+
+}
+echo '</div>';
 
 $_SESSION['user'] = 'jaein';
-
 
 class Header{
     public static function render(){
@@ -56,8 +69,10 @@ class Header{
                         </nav>
                 </li>  
             </ul>
+            
         
         </nav>
         ';
     }
 }
+

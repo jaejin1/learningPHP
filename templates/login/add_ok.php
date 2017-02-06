@@ -5,7 +5,7 @@
  * Date: 2017. 2. 6.
  * Time: PM 1:43
  */
-
+session_start();
 include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/config.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/db.php';
 

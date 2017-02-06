@@ -5,8 +5,11 @@
  * Date: 2017. 2. 3.
  * Time: PM 9:11
  */
+session_start();
 include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/config.php';
 #include_once ROOT_PATH . '/config/config.php';
+if(isset($_SESSION["session_id"]))
+    $id = $_SESSION["session_id"];
 
 ?>
 <!DOCTYPE HTML>
@@ -20,9 +23,14 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/config.php';
 <body>
 
     <? Header::render(); ?>
-    <div class="login">
-        <a href="../Sites/templates/login/login.php">로그인</a>
+
+
+        <?
+            $a = 'asdf';
+            echo $a;
+        ?>
     </div>
+
 
     <script src="<?echo JS_ROOT?>/header/header.js"></script>
 </body>

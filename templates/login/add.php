@@ -28,7 +28,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/config.php';
 <? Header::render(); ?>
 <script src="<?echo JS_ROOT?>/header/header.js"></script>
 
-<a href="/Sites/index.php">돌아가기</a>
+<a href="/Sites/templates/login/login.php">돌아가기</a>
 <br>
 <div class = login-form>
     <form id="loginform" action="./add_ok.php" name="ok" method="post">
@@ -38,11 +38,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/config.php';
                     <td class ="id-title" rowspan="1">회원가입</td>
                 </tr>
                 <tr>
-                    <td class = "id">아이디    </td>
+                    <td class = "id">아이디입력해    </td>
                     <td class = "id-input"><input type="text" id="idform" name="id"></td>
                 </tr>
                 <tr>
-                    <td class = "pw">비밀번호  </td>
+                    <td class = "pw">비밀번호도 입력하  </td>
                     <td class = "pw-input"><input type="text" id="pwform" name="pw"></td>
                 </tr>
                 <tr>
