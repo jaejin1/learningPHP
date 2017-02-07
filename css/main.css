@@ -3,6 +3,39 @@
     width: 100%;
 }
 
-.login-form{
-    align: "center";
+.write{
+    text-align: right;
+}
+
+.write-post{
+    width: 400px;
+    margin: 0 auto;
+}
+
+.table{
+    width:500px;
+    height: 200px;
+}
+
+
+.name,
+.text,
+.write-title,
+.description{
+    text-align: center;
+}
+
+form{
+    width:400px;
+    overflow:visible;
+    border:1px solid #B2CCFF;
+}
+
+.posts{
+    text-aligin: center;
+}
+
+.posts-table{
+    width:500px;
+    height: 200px;
 }

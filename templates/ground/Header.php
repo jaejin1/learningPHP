@@ -14,11 +14,11 @@ if(isset($_SESSION['session_id'])) {
 echo '<div class="login">';
 
 if(!isset($id)) {
-    echo "<a href=\"../Sites/templates/login/login.php\">로그인</a>&nbsp&nbsp&nbsp";
+    echo "<a href=\"/Sites/templates/login/login.php\">로그인</a>&nbsp&nbsp&nbsp";
 }else{
     echo $id . '님 어서오세요';
     echo "</br>";
-    echo "<a href=\"../Sites/templates/login/logout.php\">로그아웃</a>";
+    echo "<a href=\"/Sites/templates/login/logout.php\">로그아웃</a>";
 
 }
 echo '</div>';
@@ -34,20 +34,20 @@ class Header{
                     <a href="/Sites/index.php" >Jaejin</a>
                 </span>
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><span>Home</span></a>
+                    <a href="/Sites/index.php" class="nav-link"><span>Home</span></a>
                 </li> 
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link"><span>Products</span></a>
+                    <a href="/Sites/templates/posts/post1.php" class="nav-link"><span>Posts</span></a>
                         <nav class="submenu">
                             <ul class="submenu-items">
-                                <li class="submenu-item"><a href="#" class="submenu-link">Product #1</a></li>
-                                <li class="submenu-item"><a href="#" class="submenu-link">Product #2</a></li>
-                                <li class="submenu-item"><a href="#" class="submenu-link">Product #3</a></li>
+                                <li class="submenu-item"><a href="/Sites/index.php" class="submenu-link">공지사항</a></li>
+                                <li class="submenu-item"><a href="#" class="submenu-link">자유게시판</a></li>
+                                <li class="submenu-item"><a href="#" class="submenu-link">자료실</a></li>
                             </ul>
                         </nav>
                 </li> 
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><span>Services</span></a>
+                    <a href="/Sites/templates/posts/post1.php" class="nav-link"><span>Posts</span></a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link"><span>Pricing</span></a>

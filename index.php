@@ -26,7 +26,7 @@ if(isset($_SESSION["session_id"]))
 
 
         <?
-            $a = 'asdf';
+            $a = 'home';
             echo $a;
         ?>
     </div>
