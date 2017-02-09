@@ -47,7 +47,7 @@ class Header{
                         </nav>
                 </li> 
                 <li class="nav-item">
-                    <a href="/Sites/templates/posts/post1.php" class="nav-link"><span>Posts</span></a>
+                    <a href="/Sites/templates/posts/post1" class="nav-link"><span>Posts</span></a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link"><span>Pricing</span></a>
