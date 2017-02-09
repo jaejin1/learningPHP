@@ -34,14 +34,29 @@ $num = $row[0];
 
     <? Header::render(); ?>
     <script src="<?echo JS_ROOT?>/header/header.js"></script>
+
+
+    <? if(isset($_GET['post'])) {
+        $post = $_GET['post'];
+        $sql = "select * from notice where num='$post'";
+        $stmt = mysql_query($sql);
+        $row = mysql_fetch_array($stmt, MYSQL_NUM);
+
+        echo '제목 :   '.$row[1].'<br/>';
+        echo '작성자 :   '.$row[0];
+        echo '<h2>내용 :  '.$row[2].'</h2>';
+        echo '<a href = "./post1">뒤로가기</a>';
+
+    }else{
+    ?>
     <div class = "write">
-    <?
+        <?
         if(isset($id)){
             ?>
             <a href="../posts/write"> 글쓰기 </a>
             <?
         }
-    ?>
+        ?>
     </div>
 
     <div class ="posts">
@@ -55,12 +70,12 @@ $num = $row[0];
         <?
                for(;$num>0; $num--) {
                     ?><tr><?
-                   $sql = "select * from notice where num='$num'";
+                    $sql = "select * from notice where num='$num'";
                     $stmt = mysql_query($sql);
                     $row = mysql_fetch_array($stmt, MYSQL_NUM);
                    ?>
                    <td> <?echo $row[4]?> </td>
-                   <td> <?echo $row[1]?> </td>
+                   <td> <a href="?post=<?echo $row[4]?>"><?echo $row[1]?></a> </td>
                    <td> <?echo $row[0]?> </td>
                    <td> <?echo $row[3]?> </td>
                    </tr><?
@@ -69,7 +84,7 @@ $num = $row[0];
 
         </table>
     </div>
-
+    <? } ?>
 </body>
 </html>
 
