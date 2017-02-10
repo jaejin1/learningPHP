@@ -18,7 +18,7 @@ $sql = "select MAX(num) as num from notice";
 $stmt = mysql_query($sql);
 $row = mysql_fetch_array($stmt, MYSQL_NUM);
 $num = $row[0];
-
+$maxnum = $row[0];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -83,6 +83,20 @@ $num = $row[0];
         ?>
 
         </table>
+    </div>
+
+    <div class = "num">
+        <a href="./post1">처음</a>
+        <?
+        while($maxnum>0){
+            echo 'asdf';
+        }
+        ?>
+        2
+        3
+        4
+        5
+        다음
     </div>
     <? } ?>
 </body>

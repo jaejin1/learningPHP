@@ -37,10 +37,10 @@ class Header{
                     <a href="/Sites/index.php" class="nav-link"><span>Home</span></a>
                 </li> 
                 <li class="nav-item dropdown">
-                    <a href="/Sites/templates/posts/post1.php" class="nav-link"><span>Posts</span></a>
+                    <a href="index.php" class="nav-link"><span>Posts</span></a>
                         <nav class="submenu">
                             <ul class="submenu-items">
-                                <li class="submenu-item"><a href="/Sites/index.php" class="submenu-link">공지사항</a></li>
+                                <li class="submenu-item"><a href="index.php" class="submenu-link">공지사항</a></li>
                                 <li class="submenu-item"><a href="#" class="submenu-link">자유게시판</a></li>
                                 <li class="submenu-item"><a href="#" class="submenu-link">자료실</a></li>
                             </ul>

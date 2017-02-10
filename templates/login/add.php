@@ -43,7 +43,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/config.php';
                 </tr>
                 <tr>
                     <td class = "pw">비밀번호도 입력하  </td>
-                    <td class = "pw-input"><input type="text" id="pwform" name="pw"></td>
+                    <td class = "pw-input"><input type="password" id="pwform" name="pw"></td>
                 </tr>
                 <tr>
                     <td class = "description" >

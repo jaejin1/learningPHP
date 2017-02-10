@@ -95,7 +95,7 @@ html {
     background: rgba(0,0,0,0.2);
     opacity: 0;
     -webkit-transform: translate(0, 10px);
-    transform: translate(0, 10px);
+    transfofrm: translate(0, 10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
