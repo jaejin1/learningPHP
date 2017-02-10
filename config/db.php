@@ -7,9 +7,9 @@
  */
 
 define('DB_NAME','phpstudy');
-define('DB_USER','root');
+define('DB_USER','php');
 define('DB_PASSWORD','1111');
-define('DB_HOST','localhost');
+define('DB_HOST','192.168.0.26');
 
 error_reporting(E_ALL ^ E_DEPRECATED);
 
