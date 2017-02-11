@@ -13,6 +13,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/db.php';
 if(isset($_SESSION['session_id'])) {
     $id = $_SESSION['session_id'];
 }
+$block = $_GET['block'];
 /**
 $sql = "select MAX(num) as num from notice";
 $stmt = mysql_query($sql);
@@ -25,7 +26,12 @@ $sql2 = "select count(*) from notice";
 $stmt2 = mysql_query($sql2);
 $row2 = mysql_fetch_array($stmt2, MYSQL_NUM);
 $row2[0]--;
-echo $row2[0];
+$i =1;
+
+$number = ($row2[0] - ($row2[0]%5))/5 ;
+$start = $block*5;
+
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -76,11 +82,13 @@ echo $row2[0];
                 <td> 작성날짜 </td>
             </tr>
         <?
-               for(;$row2[0]>=0; $row2[0]--) {
+                $row2[0] = $row2[0] - $start +5;
+               for(;$start>$block*5-5; $start--) {
                     ?><tr><?
                     $sql = "select * from notice limit $row2[0],1";
                     $stmt = mysql_query($sql);
                     $row = mysql_fetch_array($stmt, MYSQL_NUM);
+                    $row2[0]--;
                    if($row2[0]>=0){?>
                    <td> <? echo $row2[0]+1 ?> </td>
                    <td> <a href="?post=<?echo $row[0]?>"><?echo $row[2]?></a> </td>
@@ -94,18 +102,16 @@ echo $row2[0];
     </div>
 
     <div class = "num">
-        <a href="./post1">처음</a>
-        <?
-        /*while($maxnum>0){
-            echo 'asdf';
-            $maxnum = $maxnum-5 ;
-        }*/
+        <!--<a href="./post1?block=1">처음</a>-->
+
+        <? for(;$number>=0;$number--){
+            ?>
+            <a href="./post1?block=<?echo $i?>">
+            <?echo $i?></a><?;
+            $i++;
+        }
         ?>
-        2
-        3
-        4
-        5
-        다음
+
     </div>
     <? } ?>
 </body>
