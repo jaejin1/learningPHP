@@ -10,7 +10,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/config.php';
 #include_once ROOT_PATH . '/config/config.php';
 if(isset($_SESSION["session_id"]))
     $id = $_SESSION["session_id"];
-
 ?>
 <!DOCTYPE HTML>
 <html>

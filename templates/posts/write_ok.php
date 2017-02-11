@@ -16,19 +16,6 @@ $post = $_POST['name'];
 $txtcomment = $_POST['txtcomment'];
 
 
-$sql = "select MAX(num) as num from notice";
-$stmt = mysql_query($sql);
-$row = mysql_fetch_array($stmt, MYSQL_NUM);
-$num = $row[0];
-
-
-if(!isset($num) || $num == 0){
-    $num = 1;
-}else{
-    $num++;
-}
-
-
 
 if($post == ""){
     echo "<script>alert('제목을 입력하세요.');
@@ -38,7 +25,7 @@ if($post == ""){
     location.replace('/Sites/templates/posts/write');</script>";
 }
 
-$sql = "insert into notice (id,name,text,time,num) values ('$id','$post','$txtcomment',now(),$num)";
+$sql = "insert into notice (id,name,text) values ('$id','$post','$txtcomment')";
 mysql_query($sql);
 
 echo "<script>alert('작성되었습니다.');location.replace('/Sites/templates/posts/post1');</script>";

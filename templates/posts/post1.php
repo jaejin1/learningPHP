@@ -13,12 +13,19 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/db.php';
 if(isset($_SESSION['session_id'])) {
     $id = $_SESSION['session_id'];
 }
-
+/**
 $sql = "select MAX(num) as num from notice";
 $stmt = mysql_query($sql);
 $row = mysql_fetch_array($stmt, MYSQL_NUM);
 $num = $row[0];
+
 $maxnum = $row[0];
+ */
+$sql2 = "select count(*) from notice";
+$stmt2 = mysql_query($sql2);
+$row2 = mysql_fetch_array($stmt2, MYSQL_NUM);
+$row2[0]--;
+echo $row2[0];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -42,10 +49,11 @@ $maxnum = $row[0];
         $stmt = mysql_query($sql);
         $row = mysql_fetch_array($stmt, MYSQL_NUM);
 
-        echo '제목 :   '.$row[1].'<br/>';
-        echo '작성자 :   '.$row[0];
-        echo '<h2>내용 :  '.$row[2].'</h2>';
-        echo '<a href = "./post1">뒤로가기</a>';
+        echo '제목 :   '.$row[2].'<br/>';
+        echo '작성자 :   '.$row[1];
+        echo '<h2>내용 :  '.$row[3].'</h2>';
+        echo '<a href = "./post1">뒤로가기</a>'.'<br/>';
+        echo '<a href = "./delete_ok?delete='. $row[0] .'">삭제</a>';
 
     }else{
     ?>
@@ -68,17 +76,17 @@ $maxnum = $row[0];
                 <td> 작성날짜 </td>
             </tr>
         <?
-               for(;$num>0; $num--) {
+               for(;$row2[0]>=0; $row2[0]--) {
                     ?><tr><?
-                    $sql = "select * from notice where num='$num'";
+                    $sql = "select * from notice limit $row2[0],1";
                     $stmt = mysql_query($sql);
                     $row = mysql_fetch_array($stmt, MYSQL_NUM);
-                   ?>
+                   if($row2[0]>=0){?>
+                   <td> <? echo $row2[0]+1 ?> </td>
+                   <td> <a href="?post=<?echo $row[0]?>"><?echo $row[2]?></a> </td>
+                   <td> <?echo $row[1]?> </td>
                    <td> <?echo $row[4]?> </td>
-                   <td> <a href="?post=<?echo $row[4]?>"><?echo $row[1]?></a> </td>
-                   <td> <?echo $row[0]?> </td>
-                   <td> <?echo $row[3]?> </td>
-                   </tr><?
+                   </tr><?}
                 }
         ?>
 
@@ -88,9 +96,10 @@ $maxnum = $row[0];
     <div class = "num">
         <a href="./post1">처음</a>
         <?
-        while($maxnum>0){
+        /*while($maxnum>0){
             echo 'asdf';
-        }
+            $maxnum = $maxnum-5 ;
+        }*/
         ?>
         2
         3
