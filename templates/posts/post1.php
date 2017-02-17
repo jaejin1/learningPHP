@@ -13,15 +13,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/Sites/config/db.php';
 if(isset($_SESSION['session_id'])) {
     $id = $_SESSION['session_id'];
 }
-$block = $_GET['block'];
-/**
-$sql = "select MAX(num) as num from notice";
-$stmt = mysql_query($sql);
-$row = mysql_fetch_array($stmt, MYSQL_NUM);
-$num = $row[0];
 
-$maxnum = $row[0];
- */
+$block = $_GET['block'];
+$block2 = $_GET['block2'];
+
 $sql2 = "select count(*) from notice";
 $stmt2 = mysql_query($sql2);
 $row2 = mysql_fetch_array($stmt2, MYSQL_NUM);
@@ -29,9 +24,13 @@ $row2[0]--;
 $i =1;
 
 $number = ($row2[0] - ($row2[0]%5))/5 ;
+$number2 = $number;
 $start = $block*5;
 
+$block2 = (($block) - (($block)%5))/5 ;
 
+echo $block2;
+echo 'number = '.$number;
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -85,35 +84,53 @@ $start = $block*5;
                 $row2[0] = $row2[0] - $start +5;
                for(;$start>$block*5-5; $start--) {
                     ?><tr><?
+                   if($row2[0]>=0){
                     $sql = "select * from notice limit $row2[0],1";
                     $stmt = mysql_query($sql);
                     $row = mysql_fetch_array($stmt, MYSQL_NUM);
                     $row2[0]--;
-                   if($row2[0]>=0){?>
-                   <td> <? echo $row2[0]+1 ?> </td>
+                   ?>
+                   <td> <? echo $row2[0]+2 ?> </td>
                    <td> <a href="?post=<?echo $row[0]?>"><?echo $row[2]?></a> </td>
                    <td> <?echo $row[1]?> </td>
                    <td> <?echo $row[4]?> </td>
                    </tr><?}
-                }
+               }
         ?>
 
         </table>
     </div>
 
     <div class = "num">
-        <!--<a href="./post1?block=1">처음</a>-->
+        <? if($block != 1){ ?>
+            <a href="./post1?block=1&block2=1">처음</a>
+        <? }else{
+            echo '처음';
+        }
+         if($block != 1) { ?>
+            <a href="./post1?block=<?echo $block-1 ?>&block2=<? echo $block2 ?>">이전</a>
+        <? }else
+            echo '이전';
 
-        <? for(;$number>=0;$number--){
-            ?>
-            <a href="./post1?block=<?echo $i?>">
-            <?echo $i?></a><?;
+
+        for($first = $block2 ;$number>0;$number--){
+                ?>
+                <a href="./post1?block=<? echo $i . '&block2=' . $block2 ?>"><? echo $i ?></a>
+
+                <?
+
             $i++;
         }
-        ?>
 
+
+
+         if($block != ($number2+1)) { ?>
+            <a href="./post1?block=<?echo $block+1 ?>&block2=<? echo $block2 ?>">다음</a>
+        <? } ?>
     </div>
+
     <? } ?>
+
 </body>
 </html>
 

@@ -28,7 +28,7 @@ if($post == ""){
 $sql = "insert into notice (id,name,text) values ('$id','$post','$txtcomment')";
 mysql_query($sql);
 
-echo "<script>alert('작성되었습니다.');location.replace('/Sites/templates/posts/post1');</script>";
+echo "<script>alert('작성되었습니다.');location.replace('/Sites/templates/posts/post1?block=1&block2=1');</script>";
 
 
 

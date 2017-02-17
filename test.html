@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Server Time with Javascript</title>
+</head>
+<body>
+<script language="javascript">
+    var xmlHttp;
+    function srvTime(url){
+
+        if(url == undefined) { url = "http://localhost/" }
+        document.write(url);
+
+        xmlHttp = new XMLHttpRequest();
+        xmlHttp.open('HEAD',url,false);  //헤더 정보만 받기 위해 HEAD방식으로 요청.
+
+        xmlHttp.setRequestHeader("Content-Type", "text/html");
+        xmlHttp.send('');
+        document.write("1asdf");
+
+        return xmlHttp.getResponseHeader("Date");  //받은 헤더정보에서 Date 속성을 리턴.
+    }
+
+    var serverTime = srvTime(), clientTime = new Date();
+
+    document.write( 'crootTime is ' + serverTime + '<br /> clientTime is ' + clientTime +'<br />');
+    document.write(url);
+    document.write("http://www.naver.com");
+
+</script>
+</body>
+</html>
+
