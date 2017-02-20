@@ -18,6 +18,15 @@ if(isset($_SESSION["session_id"]))
     <title> jaejin study page </title>
     <link rel="stylesheet" type="text/css" href="<?echo HOME_PATH?>/css/main/header">
 
+    <script src="js/Chart/Chart.bundle.js"></script>
+    <script src="js/Chart/utils.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
 
 </head>
 <body>
@@ -25,50 +34,75 @@ if(isset($_SESSION["session_id"]))
     <? Header::render(); ?>
 
 
-        <?
-            $a = 'home';
-            echo $a;
-        ?>
-    <!--<script type="text/javascript">
-        var xhr;
-        function getServerTime(){
-            xhr = new XMLHttpRequest();
-            xhr.open('HEAD',"http://uiandwe.tistory.com/",false);
-            xhr.setRequestHeader("Content-Type", "text/html");
-            //document.write("1asdf");
 
-            xhr.send('');
-            document.write("1asdf");
 
-            eval("reg.timer").value = xhr.getResponseHeader("Date");
-            xhr = null;
-        }
 
-        window.setInterval("getServerTime();",100);
-    </script>-->
-    <script language="javascript">
-        var xmlHttp;
-        function srvTime(){
-            xmlHttp = new XMLHttpRequest();
-            xmlHttp.open('HEAD',"http://localhost/Sites/index",false);  //헤더 정보만 받기 위해 HEAD방식으로 요청.
+    <div style="width:40%">
+        <canvas id="canvas"></canvas>
+    </div>
 
-            xmlHttp.setRequestHeader("Content-Type", "text/html");
-            xmlHttp.send('');
-            document.write("1asdf");
+    <script>
+        var randomScalingFactor = function() {
+            return Math.round(Math.random() * 100);
+        };
 
-            eval("reg.timer").value=xmlHttp.getResponseHeader("Date");
-            return xmlHttp.getResponseHeader("Date");  //받은 헤더정보에서 Date 속성을 리턴.
-        }
+        var color = Chart.helpers.color;
+        var config = {
+            type: 'radar',
+            data: {
+                labels: [["Eating", "Dinner"], ["Drinking", "Water"], "Sleeping", ["Designing", "Graphics"], "Coding", "Cycling", "Running"],
+                datasets: [{
+                    label: "My First dataset",
+                    backgroundColor: color(window.chartColors.red).alpha(0.2).rgbString(),
+                    borderColor: window.chartColors.red,
+                    pointBackgroundColor: window.chartColors.red,
+                    data: [
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor()
+                    ]
+                }, {
+                    label: "My Second dataset",
+                    backgroundColor: color(window.chartColors.blue).alpha(0.2).rgbString(),
+                    borderColor: window.chartColors.blue,
+                    pointBackgroundColor: window.chartColors.blue,
+                    data: [
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor()
+                    ]
+                },]
+            },
+            options: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Radar Chart'
+                },
+                scale: {
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
 
-        var serverTime = srvTime(), clientTime = new Date();
+        window.onload = function() {
+            window.myRadar = new Chart(document.getElementById("canvas"), config);
+        };  //표 그리기
 
-        document.write( 'crootTime is ' + serverTime + '<br /> clientTime is ' + clientTime +'<br />');
-        document.write(url);
-        document.write("http://www.naver.com");
 
     </script>
-
-
 
 
 

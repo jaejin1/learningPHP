@@ -1,34 +1,86 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
+<!doctype html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Get Server Time with Javascript</title>
+    <title>Radar Chart</title>
+    <script src="js/Chart/Chart.bundle.js"></script>
+    <script src="js/Chart/utils.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
 </head>
+
 <body>
-<script language="javascript">
-    var xmlHttp;
-    function srvTime(url){
+<div style="width:40%">
+    <canvas id="canvas"></canvas>
+</div>
 
-        if(url == undefined) { url = "http://localhost/" }
-        document.write(url);
+<script>
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
 
-        xmlHttp = new XMLHttpRequest();
-        xmlHttp.open('HEAD',url,false);  //헤더 정보만 받기 위해 HEAD방식으로 요청.
+    var color = Chart.helpers.color;
+    var config = {
+        type: 'radar',
+        data: {
+            labels: [["Eating", "Dinner"], ["Drinking", "Water"], "Sleeping", ["Designing", "Graphics"], "Coding", "Cycling", "Running"],
+            datasets: [{
+                label: "My First dataset",
+                backgroundColor: color(window.chartColors.red).alpha(0.2).rgbString(),
+                borderColor: window.chartColors.red,
+                pointBackgroundColor: window.chartColors.red,
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ]
+            }, {
+                label: "My Second dataset",
+                backgroundColor: color(window.chartColors.blue).alpha(0.2).rgbString(),
+                borderColor: window.chartColors.blue,
+                pointBackgroundColor: window.chartColors.blue,
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ]
+            },]
+        },
+        options: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Radar Chart'
+            },
+            scale: {
+                ticks: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
 
-        xmlHttp.setRequestHeader("Content-Type", "text/html");
-        xmlHttp.send('');
-        document.write("1asdf");
+    window.onload = function() {
+        window.myRadar = new Chart(document.getElementById("canvas"), config);
+    };  //표 그리기
 
-        return xmlHttp.getResponseHeader("Date");  //받은 헤더정보에서 Date 속성을 리턴.
-    }
-
-    var serverTime = srvTime(), clientTime = new Date();
-
-    document.write( 'crootTime is ' + serverTime + '<br /> clientTime is ' + clientTime +'<br />');
-    document.write(url);
-    document.write("http://www.naver.com");
 
 </script>
 </body>
-</html>
 
+</html>
